@@ -1,13 +1,339 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>161-bmrh-homepage</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방림명지로드힐 | Bangrim Myeongji Roadhill</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="container navbar-container">
+            <div class="brand" onclick="setActiveTab('home')">
+                <div class="logo-box">BM</div>
+                <div class="brand-text">
+                    <h1 class="apt-name" data-t="nav.brand">방림명지로드힐</h1>
+                    <span class="sub-brand">Aurum Residences</span>
+                </div>
+            </div>
+
+            <ul class="nav-links desktop-menu">
+                <li><button class="nav-btn active" onclick="setActiveTab('home')" data-t="nav.home">홈</button></li>
+                <li><button class="nav-btn" onclick="setActiveTab('notice')" data-t="nav.notice">알림마당</button></li>
+                <li><button class="nav-btn" onclick="setActiveTab('community')" data-t="nav.community">커뮤니티</button></li>
+                <li><button class="nav-btn" onclick="setActiveTab('services')" data-t="nav.services">생활편의</button></li>
+                <li><button class="nav-btn" onclick="setActiveTab('about')" data-t="nav.about">단지소개</button></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="lang-toggle" onclick="toggleLang()">
+                    <span id="lang-text">EN</span>
+                </button>
+                <button class="login-btn" data-t="nav.login">로그인</button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-content">
+            <button class="nav-btn-mobile" onclick="setActiveTab('home'); toggleMobileMenu()" data-t="nav.home">홈</button>
+            <button class="nav-btn-mobile" onclick="setActiveTab('notice'); toggleMobileMenu()" data-t="nav.notice">알림마당</button>
+            <button class="nav-btn-mobile" onclick="setActiveTab('community'); toggleMobileMenu()" data-t="nav.community">커뮤니티</button>
+            <button class="nav-btn-mobile" onclick="setActiveTab('services'); toggleMobileMenu()" data-t="nav.services">생활편의</button>
+            <button class="nav-btn-mobile" onclick="setActiveTab('about'); toggleMobileMenu()" data-t="nav.about">단지소개</button>
+            <button class="login-btn-mobile" data-t="nav.login">로그인</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Tab -->
+        <section id="tab-home" class="tab-content active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-bg">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="container hero-container">
+                    <div class="hero-text animate-fade-in">
+                        <div class="hero-badge">
+                            <span class="pulse-dot"></span>
+                            <span data-t="hero.subtitle">방림동 프리미엄 아파트</span>
+                        </div>
+                        <h2 class="hero-title" data-t="hero.title">방림명지의 품격이<br>삶의 여유가 되다</h2>
+                        <p class="hero-desc" data-t="hero.description">광주 남구의 중심, 우수한 교육 환경과 편리한 교통망을 갖춘 프리미엄 라이프를 경험하세요.</p>
+                        
+                        <div class="hero-ctas">
+                            <button class="cta-primary" onclick="scrollToId('complex-info')">
+                                <span data-t="hero.cta1">단지 시설 둘러보기</span>
+                                <i data-lucide="chevron-right"></i>
+                            </button>
+                            <div class="hero-stats-mini">
+                                <div class="mini-avatars">
+                                    <div class="avatar"></div>
+                                    <div class="avatar"></div>
+                                    <div class="avatar"></div>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-val">197세대</span>
+                                    <span class="stat-label">Total Units</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions-stack">
+                        <div class="action-card" onclick="alert('서비스 준비중입니다.')">
+                            <div class="action-icon"><i data-lucide="vote"></i></div>
+                            <div class="action-info">
+                                <h3 data-t="actions.voting">전자투표</h3>
+                                <p data-t="actions.votingDesc">단지 주요 안건 투표</p>
+                            </div>
+                            <i data-lucide="chevron-right" class="chevron"></i>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon"><i data-lucide="calendar"></i></div>
+                            <div class="action-info">
+                                <h3 data-t="actions.booking">시설예약</h3>
+                                <p data-t="actions.bookingDesc">커뮤니티 시설 예약</p>
+                            </div>
+                            <i data-lucide="chevron-right" class="chevron"></i>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon"><i data-lucide="car"></i></div>
+                            <div class="action-info">
+                                <h3 data-t="actions.parking">방문차량</h3>
+                                <p data-t="actions.parkingDesc">방문객 차량 미리 등록</p>
+                            </div>
+                            <i data-lucide="chevron-right" class="chevron"></i>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon"><i data-lucide="message-square"></i></div>
+                            <div class="action-info">
+                                <h3 data-t="actions.complaint">민원접수</h3>
+                                <p data-t="actions.complaintDesc">관리사무소 민원 신청</p>
+                            </div>
+                            <i data-lucide="chevron-right" class="chevron"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Bottom Info -->
+                <div class="hero-bottom-info container">
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value">Completed</span>
+                    </div>
+                    <div class="info-divider"></div>
+                    <div class="info-item">
+                        <span class="info-label">Type</span>
+                        <span class="info-value">Premium Apt</span>
+                    </div>
+                    <div class="info-divider"></div>
+                    <div class="info-item">
+                        <span class="info-label">Area</span>
+                        <span class="info-value">Bangrim-dong</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Complex Info Section -->
+            <section id="complex-info" class="complex-info py-40">
+                <div class="container">
+                    <div class="section-header text-center mb-16">
+                        <h2 class="sub-title" data-t="complexInfo.subtitle">COMPLEX INFO</h2>
+                        <h3 class="main-title" data-t="complexInfo.title">단지 기본 정보</h3>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="i-icon"><i data-lucide="map-pin"></i></div>
+                            <div class="i-text">
+                                <span class="i-label" data-t="complexInfo.address">주소</span>
+                                <p class="i-value" data-t="complexInfo.addressValue">광주광역시 남구 대남대로85번길 3</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="i-icon"><i data-lucide="home"></i></div>
+                            <div class="i-text">
+                                <span class="i-label" data-t="complexInfo.households">세대수</span>
+                                <p class="i-value" data-t="complexInfo.householdsValue">197세대 (1개동)</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="i-icon"><i data-lucide="calendar"></i></div>
+                            <div class="i-text">
+                                <span class="i-label" data-t="complexInfo.year">준공년도</span>
+                                <p class="i-value" data-t="complexInfo.yearValue">2015년 10월</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="i-icon"><i data-lucide="thermometer"></i></div>
+                            <div class="i-text">
+                                <span class="i-label" data-t="complexInfo.heating">난방방식</span>
+                                <p class="i-value" data-t="complexInfo.heatingValue">개별난방 (도시가스)</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="i-icon"><i data-lucide="building"></i></div>
+                            <div class="i-text">
+                                <span class="i-label" data-t="complexInfo.floors">층수</span>
+                                <p class="i-value" data-t="complexInfo.floorsValue">지상 24층 / 지하 2층</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="i-icon"><i data-lucide="info"></i></div>
+                            <div class="i-text">
+                                <span class="i-label" data-t="complexInfo.builder">시공사</span>
+                                <p class="i-value" data-t="complexInfo.builderValue">명지주택건설(주)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Advantages -->
+                    <div class="advantages-grid mt-24">
+                        <div class="adv-card">
+                            <h4 class="adv-tag">#사통팔달 교통망</h4>
+                            <p class="adv-desc">대남대로와 광주순환도로가 인접하여 광주 전역으로의 이동이 매우 편리합니다.</p>
+                        </div>
+                        <div class="adv-card">
+                            <h4 class="adv-tag">#우수한 교육학군</h4>
+                            <p class="adv-desc">방림초, 봉선중 등 도보권 내 우수한 학군이 형성되어 있어 자녀 교육에 최적화되어 있습니다.</p>
+                        </div>
+                        <div class="adv-card">
+                            <h4 class="adv-tag">#풍부한 생활인프라</h4>
+                            <p class="adv-desc">인근 대형마트와 남구청, 광주기독병원 등 생활 편의 시설이 밀집되어 있습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="kapt-link mt-16 text-center">
+                        <a href="https://www.k-apt.go.kr" target="_blank" class="btn-kapt">
+                            <i data-lucide="external-link"></i>
+                            <span data-t="complexInfo.kapt">K-APT 정보 확인</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="gallery py-40">
+                <div class="container">
+                    <div class="section-header text-center mb-16">
+                        <h2 class="sub-title">PREMIUM ALBUM</h2>
+                        <h3 class="main-title">단지 갤러리</h3>
+                    </div>
+
+                    <div class="album-grid">
+                        <div class="album-card bg-1">
+                            <div class="album-overlay"></div>
+                            <div class="album-text">
+                                <span class="album-vol">Vol. 1</span>
+                                <h4>단지 전경</h4>
+                                <p>웅장하고 모던한 방림명지로드힐의 건축 미학</p>
+                                <div class="album-btn"><i data-lucide="chevron-right"></i></div>
+                            </div>
+                        </div>
+                        <div class="album-card bg-2">
+                            <div class="album-overlay"></div>
+                            <div class="album-text">
+                                <span class="album-vol">Vol. 2</span>
+                                <h4>조경 및 산책로</h4>
+                                <p>자연과 어우러진 도심 속 휴식 공간</p>
+                                <div class="album-btn"><i data-lucide="chevron-right"></i></div>
+                            </div>
+                        </div>
+                        <div class="album-card bg-3">
+                            <div class="album-overlay"></div>
+                            <div class="album-text">
+                                <span class="album-vol">Vol. 3</span>
+                                <h4>입주민 커뮤니티</h4>
+                                <p>품격 있는 라이프스타일을 위한 전용 시설</p>
+                                <div class="album-btn"><i data-lucide="chevron-right"></i></div>
+                            </div>
+                        </div>
+                        <div class="album-card bg-4">
+                            <div class="album-overlay"></div>
+                            <div class="album-text">
+                                <span class="album-vol">Vol. 4</span>
+                                <h4>스마트 주거</h4>
+                                <p>최첨단 시스템으로 완성되는 미래형 주거</p>
+                                <div class="album-btn"><i data-lucide="chevron-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Placeholder Tabs (Notice, Community, etc.) -->
+        <section id="tab-placeholder" class="tab-content pt-48 pb-32">
+            <div class="container text-center">
+                <h2 id="placeholder-title" class="placeholder-title">알림마당</h2>
+                <p id="placeholder-desc" class="placeholder-desc">입주민을 위한 유익한 소식을 준비 중입니다.</p>
+                <div class="coming-soon-box mt-20">
+                    <i data-lucide="message-square" class="placeholder-icon"></i>
+                    <h4>컨텐츠 준비 중</h4>
+                    <p>실제 입주민 데이터 연동 작업이 진행 중입니다.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3 class="footer-logo">AURUM <span class="gold">RESIDENCES</span></h3>
+                <p class="footer-desc" data-t="footer.description">방림명지로드힐은 남구의 중심부에서 실거주자의 편의를 최우선으로 생각하는 주거 공간을 제공합니다.</p>
+                <div class="footer-sns">
+                    <span class="sns-item">FB</span>
+                    <span class="sns-item">IG</span>
+                    <span class="sns-item">YT</span>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="col-title" data-t="footer.office">관리사무소</h4>
+                <ul class="col-list">
+                    <li data-t="footer.contact">T. 062-671-0000</li>
+                    <li data-t="footer.hours">평일 09:00 - 18:00</li>
+                    <li data-t="footer.holiday">주말/공휴일 휴무</li>
+                    <li data-t="footer.location">관리사무소 1층</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="col-title" data-t="footer.services">주요 서비스</h4>
+                <ul class="col-list">
+                    <li data-t="actions.booking">시설예약</li>
+                    <li data-t="actions.voting">전자투표</li>
+                    <li data-t="actions.parking">방문차량</li>
+                    <li data-t="actions.complaint">민원접수</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 Aurum Residences (Bangrim Myeongji Roadhill). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize icons
+        lucide.createIcons();
+    </script>
+</body>
 </html>
