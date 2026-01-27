@@ -26,90 +26,78 @@ const Hero = ({ t, actionsT }) => {
             <div className="container relative z-10 grid lg:grid-cols-12 gap-12 px-4 items-center">
                 {/* Left Content - Typography Focus */}
                 <div className="lg:col-span-8 animate-fade-in">
-                    <div className="inline-flex items-center gap-2 px-4 py-1 bg-secondary/20 backdrop-blur-md rounded-full border border-secondary/30 mb-8">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-secondary/20 backdrop-blur-md rounded-full border border-secondary/30 mb-8">
                         <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-                        <span className="text-secondary text-sm font-black tracking-widest uppercase">{t.subtitle}</span>
+                        <span className="text-secondary text-[10px] font-black tracking-widest uppercase">{t.subtitle}</span>
                     </div>
 
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl text-white font-black leading-[0.95] mb-10 drop-shadow-2xl tracking-tighter">
-                        {t.subtitle === 'Bangrim Myeongji Roadhill' ? (
-                            <>
-                                Modern <br />
-                                Aesthetics <br />
-                                <span className="text-secondary">Refined</span>
-                            </>
-                        ) : (
-                            <>
-                                방림명의 <br />
-                                품격이 <br />
-                                <span className="text-secondary">숨쉬다</span>
-                            </>
-                        )}
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl text-white font-black leading-[0.95] mb-10 drop-shadow-2xl tracking-tighter whitespace-pre-line">
+                        {t.title}
                     </h1>
 
-                    <p className="text-white/80 text-xl md:text-2xl mb-12 max-w-xl leading-relaxed font-medium drop-shadow-lg">
+                    <p className="text-white/80 text-lg md:text-xl mb-12 max-w-xl leading-relaxed font-medium drop-shadow-lg opacity-90">
                         {t.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-6 mt-8">
+                    <div className="flex flex-wrap gap-8 mt-8">
                         <button
                             onClick={() => document.getElementById('complex-info')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="group bg-secondary text-primary px-12 py-5 rounded-full font-black text-xl hover:bg-white transition-all shadow-2xl flex items-center gap-3"
+                            className="group bg-secondary text-primary px-10 py-4 rounded-full font-black text-lg hover:bg-white transition-all shadow-2xl flex items-center gap-3"
                         >
                             {t.cta1}
-                            <ChevronRight className="group-hover:translate-x-2 transition-transform" />
+                            <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
                         </button>
 
-                        <div className="flex -space-x-4">
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className="w-14 h-14 rounded-full border-4 border-white/10 bg-slate-300 overflow-hidden shadow-xl" />
-                            ))}
-                            <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white font-bold text-xs border border-white/20">
-                                +197
+                        <div className="flex items-center gap-4">
+                            <div className="flex -space-x-3">
+                                {[1, 2, 3].map((i) => (
+                                    <div key={i} className="w-12 h-12 rounded-full border-2 border-white/20 bg-slate-400 overflow-hidden shadow-xl" />
+                                ))}
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="text-white font-black text-xl leading-none">197세대</span>
+                                <span className="text-white/50 text-[10px] font-bold uppercase tracking-widest mt-1">Total Units</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Right Content - Vertical Action Stack inspired by reference */}
+                {/* Right Content - Vertical Action Stack */}
                 <div className="lg:col-span-4 flex flex-col gap-4 lg:ml-auto w-full max-w-sm">
                     {quickActions.map((action, i) => (
                         <div
                             key={action.id}
-                            className="group bg-white/10 backdrop-blur-3xl p-6 rounded-[2rem] border border-white/20 hover:bg-white hover:scale-105 transition-all duration-500 cursor-pointer flex items-center gap-6 shadow-2xl relative overflow-hidden"
-                            style={{ animationDelay: `${i * 0.15}s` }}
+                            className="group bg-white/5 backdrop-blur-3xl p-5 rounded-3xl border border-white/10 hover:bg-white hover:border-white transition-all duration-500 cursor-pointer flex items-center gap-5 shadow-2xl relative overflow-hidden"
+                            style={{ animationDelay: `${i * 0.1}s` }}
                         >
-                            <div className="absolute inset-0 bg-gradient-to-r from-secondary/0 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-white group-hover:bg-primary group-hover:text-white group-hover:rotate-6 transition-all duration-300 shadow-inner">
+                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-white group-hover:bg-primary group-hover:text-white transition-all duration-300">
                                 {action.icon}
                             </div>
                             <div className="flex-grow">
-                                <h3 className="text-xl font-black text-white group-hover:text-primary transition-colors tracking-tight">{action.name}</h3>
-                                <p className="text-white/50 text-xs group-hover:text-text-muted transition-colors font-bold uppercase tracking-widest leading-none mt-1">{action.desc}</p>
+                                <h3 className="text-lg font-black text-white group-hover:text-primary transition-colors tracking-tight leading-tight">{action.name}</h3>
+                                <p className="text-white/40 text-[10px] group-hover:text-text-muted transition-colors font-bold uppercase tracking-widest mt-1">{action.desc}</p>
                             </div>
-                            <div className="opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
-                                <ChevronRight className="text-secondary" size={24} />
-                            </div>
+                            <ChevronRight className="text-white/20 group-hover:text-secondary group-hover:translate-x-1 transition-all" size={20} />
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Hero Stats Overlay */}
-            <div className="absolute bottom-12 left-12 hidden xl:flex gap-16 text-white/40 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-                <div>
-                    <span className="block text-2xl font-black text-white tracking-tighter">197 Units</span>
-                    <span className="text-xs font-bold uppercase tracking-widest">Total Households</span>
+            {/* Hero Information Bar */}
+            <div className="absolute bottom-10 left-10 hidden xl:flex gap-12 text-white/40 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+                <div className="flex flex-col">
+                    <span className="text-sm font-bold uppercase tracking-widest opacity-60">Status</span>
+                    <span className="text-xl font-black text-white tracking-tight mt-1">Completed</span>
                 </div>
-                <div className="w-px h-10 bg-white/10 self-center" />
-                <div>
-                    <span className="block text-2xl font-black text-white tracking-tighter">24 Floors</span>
-                    <span className="text-xs font-bold uppercase tracking-widest">Building Height</span>
+                <div className="w-px h-8 bg-white/10 self-center" />
+                <div className="flex flex-col">
+                    <span className="text-sm font-bold uppercase tracking-widest opacity-60">Type</span>
+                    <span className="text-xl font-black text-white tracking-tight mt-1">Premium Apt</span>
                 </div>
-                <div className="w-px h-10 bg-white/10 self-center" />
-                <div>
-                    <span className="block text-2xl font-black text-white tracking-tighter">Gwangju</span>
-                    <span className="text-xs font-bold uppercase tracking-widest">Location</span>
+                <div className="w-px h-8 bg-white/10 self-center" />
+                <div className="flex flex-col">
+                    <span className="text-sm font-bold uppercase tracking-widest opacity-60">Area</span>
+                    <span className="text-xl font-black text-white tracking-tight mt-1">Bangrim-dong</span>
                 </div>
             </div>
         </div>

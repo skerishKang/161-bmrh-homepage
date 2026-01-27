@@ -9,9 +9,9 @@ export const translations = {
             login: '로그인',
         },
         hero: {
-            subtitle: '방림명지로드힐',
-            title: '품격 있는 기술로 완성되는 여유로운 라이프스타일',
-            description: '광주 남구의 중심, 방림명지로드힐에서 스마트하고 안전한 프리미엄 아파트 생활을 시작하세요.',
+            subtitle: '방림동 프리미엄 아파트',
+            title: '방림명지의 품격이\n삶의 여유가 되다',
+            description: '광주 남구의 중심, 우수한 교육 환경과 편리한 교통망을 갖춘 리플 프리미엄 라이프를 경험하세요.',
             cta1: '단지 시설 둘러보기',
             cta2: '최신 공지 확인',
         },
@@ -53,7 +53,7 @@ export const translations = {
             },
         },
         footer: {
-            description: '우리는 거주 그 이상의 가치를 디자인합니다. 방림명지로드힐의 품격이 홈페이지에서도 이어집니다.',
+            description: '방림명지로드힐은 남구의 중심부에서 실거주자의 편의를 최우선으로 생각하는 주거 공간을 제공합니다. 우수한 학군과 편리한 교통을 직접 누려보세요.',
             office: '관리사무소',
             services: '주요 서비스',
             contact: 'T. 062-671-0000',
@@ -72,9 +72,9 @@ export const translations = {
             login: 'Login',
         },
         hero: {
-            subtitle: 'Bangrim Myeongji Roadhill',
-            title: 'Luxury Lifestyle Perfected by Elegant Technology',
-            description: 'Start your premium apartment life with smart and safe services at the heart of Nam-gu, Gwangju.',
+            subtitle: 'Premium Residences',
+            title: 'The Dignity of Bangrim\nBecomes the Ease of Life',
+            description: 'Experience a premium lifestyle in the heart of Nam-gu, Gwangju, with excellent schools and convenient transport links.',
             cta1: 'Explore Facilities',
             cta2: 'Check Latest News',
         },
@@ -116,7 +116,7 @@ export const translations = {
             },
         },
         footer: {
-            description: 'We design values beyond residence. The dignity of Bangrim Myeongji Roadhill continues on our website.',
+            description: 'Experience value beyond residence at Bangrim Myeongji Roadhill, featuring top-tier schools and convenient access in the heart of Nam-gu.',
             office: 'Management Office',
             services: 'Main Services',
             contact: 'T. +82-62-671-0000',

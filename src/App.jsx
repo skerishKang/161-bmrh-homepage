@@ -18,7 +18,7 @@ function App() {
             <Hero t={t.hero} actionsT={t.actions} />
 
             {/* Complex Info Section */}
-            <section className="mt-40 container " id="complex-info">
+            <section className="mt-40 container scroll-mt-32" id="complex-info">
               <div className="text-center mb-16">
                 <h2 className="text-secondary font-bold tracking-widest uppercase mb-2">{t.complexInfo.subtitle}</h2>
                 <h3 className="text-4xl font-extrabold text-primary">{t.complexInfo.title}</h3>
@@ -31,6 +31,22 @@ function App() {
                 <InfoCard icon={<Thermometer />} label={t.complexInfo.heating} value={t.complexInfo.heatingValue} />
                 <InfoCard icon={<Building />} label={t.complexInfo.floors} value={t.complexInfo.floorsValue} />
                 <InfoCard icon={<Info />} label={t.complexInfo.builder} value={t.complexInfo.builderValue} />
+              </div>
+
+              {/* Specific Location Strengths */}
+              <div className="mt-16 grid md:grid-cols-3 gap-8 px-4">
+                <div className="bg-slate-50 p-6 rounded-2xl border border-border">
+                  <h4 className="font-black text-primary mb-3">#사통팔달 교통망</h4>
+                  <p className="text-text-muted text-sm leading-relaxed">대남대로와 광주순환도로가 인접하여 광주 전역으로의 이동이 매우 편리합니다.</p>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-2xl border border-border">
+                  <h4 className="font-black text-primary mb-3">#우수한 교육학군</h4>
+                  <p className="text-text-muted text-sm leading-relaxed">방림초, 봉선중 등 도보권 내 우수한 학군이 형성되어 있어 자녀 교육에 최적화되어 있습니다.</p>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-2xl border border-border">
+                  <h4 className="font-black text-primary mb-3">#풍부한 생활인프라</h4>
+                  <p className="text-text-muted text-sm leading-relaxed">인근 대형마트와 남구청, 광주기독병원 등 생활 편의 시설이 밀집되어 있습니다.</p>
+                </div>
               </div>
 
               <div className="mt-12 text-center">
@@ -53,31 +69,28 @@ function App() {
                 <h3 className="text-4xl font-extrabold text-primary">{lang === 'ko' ? '단지 갤러리' : 'Complex Gallery'}</h3>
               </div>
 
-              <div className="space-y-16 px-4">
+              <div className="grid md:grid-cols-2 gap-8 px-4">
                 {[
-                  { title: lang === 'ko' ? '단지 전경' : 'Complex Overview', desc: '웅장하고 모던한 방림명지로드힐의 건축 미학' },
-                  { title: lang === 'ko' ? '조경 및 산책로' : 'Landscaping & Trails', desc: '자연과 어우러진 도심 속 휴식 공간' },
-                  { title: lang === 'ko' ? '입주민 커뮤니티' : 'Community Center', desc: '품격 있는 라이프스타일을 위한 전용 시설' }
+                  { title: lang === 'ko' ? '단지 전경' : 'Complex Overview', desc: '웅장하고 모던한 방림명지로드힐의 건축 미학', bg: 'bg-slate-800' },
+                  { title: lang === 'ko' ? '조경 및 산책로' : 'Landscaping & Trails', desc: '자연과 어우러진 도심 속 휴식 공간', bg: 'bg-emerald-900' },
+                  { title: lang === 'ko' ? '입주민 커뮤니티' : 'Community Center', desc: '품격 있는 라이프스타일을 위한 전용 시설', bg: 'bg-indigo-950' },
+                  { title: lang === 'ko' ? '스마트 주거' : 'Smart Living', desc: '최첨단 시스템으로 완성되는 미래형 주거', bg: 'bg-slate-900' }
                 ].map((album, i) => (
-                  <div key={i} className="group relative h-[600px] overflow-hidden rounded-[3rem] shadow-2xl cursor-pointer">
-                    <div className="absolute inset-0 bg-slate-200">
-                      {/* Realistic Placeholder Style */}
-                      <div className="w-full h-full flex flex-col items-center justify-center text-text-muted gap-4">
-                        <ImageIcon size={64} className="opacity-20 translate-y-[-20px]" />
-                        <span className="text-2xl font-black italic opacity-20 tracking-widest uppercase">Premium Photography {i + 1}</span>
-                        <p className="text-sm opacity-30 mt-4">Actual Apartment Image Placeholder</p>
+                  <div key={i} className="group relative h-[450px] overflow-hidden rounded-[2rem] shadow-2xl cursor-pointer">
+                    <div className={`absolute inset-0 ${album.bg} transition-transform duration-1000 group-hover:scale-110`}>
+                      {/* Placeholder Visuals */}
+                      <div className="absolute inset-0 opacity-20 flex items-center justify-center">
+                        <ImageIcon size={120} strokeWidth={0.5} />
                       </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
-                    <div className="absolute bottom-16 left-16 right-16 text-white translate-y-4 group-hover:translate-y-0 transition-all duration-700">
-                      <div className="flex items-end justify-between border-b border-white/20 pb-8">
-                        <div>
-                          <h4 className="text-6xl font-black mb-4 tracking-tighter leading-none">{album.title}</h4>
-                          <p className="text-2xl text-white/70 max-w-xl font-medium">{album.desc}</p>
-                        </div>
-                        <div className="w-20 h-20 rounded-full border border-white/30 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all group-hover:rotate-45">
-                          <ChevronRight size={40} />
-                        </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-10 left-10 right-10 text-white">
+                      <span className="text-secondary text-[10px] font-black tracking-widest uppercase mb-2 block opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">Vol. {i + 1}</span>
+                      <h4 className="text-4xl font-black mb-3 tracking-tighter">{album.title}</h4>
+                      <p className="text-white/60 text-sm max-w-xs font-medium line-clamp-2">{album.desc}</p>
+                      <div className="mt-6 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-secondary group-hover:border-secondary transition-all">
+                        <ChevronRight size={20} />
                       </div>
                     </div>
                   </div>
