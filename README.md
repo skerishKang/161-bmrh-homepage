@@ -1,16 +1,179 @@
-# React + Vite
+# 방림명지로드힐 홈페이지
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+방림명지로드힐의 단지 정보, 공식 공지, 관리 일정과 주민 서비스를 제공하기 위한 홈페이지 프로젝트입니다.
 
-Currently, two official plugins are available:
+> **현재 상태: 정적 UI 프로토타입 / 운영 사용 불가**
+>
+> 이 저장소의 현재 화면은 디자인과 정보구조를 검토하기 위한 초기 시안입니다. 공식 홈페이지, 입주민 포털, 전자투표, 민원접수, 시설예약 또는 방문차량 시스템으로 승인되거나 검증된 상태가 아닙니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 제품 방향
 
-## React Compiler
+이 프로젝트는 일반적인 분양 홍보 사이트가 아니라 다음 원칙을 중심으로 발전시킵니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> **정확한 정보 · 투명한 관리 · 실용적인 주민 소통**
 
-## Expanding the ESLint configuration
+최초 운영 버전은 검증된 공개 정보만 제공하는 읽기 중심 홈페이지로 제한합니다. 로그인, 민원, 방문차량, 예약, 비공개 문서 및 전자투표는 보안·개인정보·권한·감사로그 설계가 완료된 이후 별도 단계에서 검토합니다.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 현재 구현
+
+- 단일 정적 홈페이지
+- 한국어·영어 텍스트 전환
+- 단지 소개 및 기본 정보 카드
+- 단지 갤러리 형태의 UI
+- 전자투표·시설예약·방문차량·민원접수 진입 카드
+- 데스크톱 및 모바일 메뉴 시안
+- Netlify 정적 배포 설정
+
+## 현재 구현되지 않은 기능
+
+- 실제 로그인과 입주민 인증
+- 공지사항 데이터베이스
+- 관리자 작성·검토·승인 화면
+- 전자투표
+- 민원 접수 및 처리 이력
+- 시설예약
+- 방문차량 등록
+- 주민 커뮤니티
+- 역할별 접근제어
+- 게시물 버전관리와 감사로그
+- 개인정보 보관·삭제 정책
+- 자동 테스트 및 CI 품질 게이트
+
+화면에 버튼이나 메뉴가 존재하더라도 실제 기능이 구현되었다는 의미는 아닙니다.
+
+## 기술 구성
+
+현재 실제 배포 대상은 Vanilla HTML/CSS/JavaScript입니다.
+
+```text
+index.html
+css/style.css
+js/script.js
+netlify.toml
+```
+
+저장소에는 초기 React/Vite 실험 과정에서 생성된 파일과 패키지 설정이 남아 있을 수 있습니다. 향후 기술구조를 확정할 때 사용하지 않는 파일과 의존성을 정리해야 합니다.
+
+## 로컬 확인
+
+정적 서버를 사용해 저장소 루트를 실행합니다.
+
+```bash
+python -m http.server 8080
+```
+
+브라우저에서 `http://localhost:8080`을 엽니다.
+
+파일을 직접 열 수도 있지만, 브라우저 보안정책과 상대경로 동작을 정확히 확인하려면 로컬 HTTP 서버 사용을 권장합니다.
+
+## 저장소 구조
+
+```text
+.
+├── index.html                         # 현재 정적 홈페이지
+├── css/style.css                      # 디자인 시스템과 반응형 스타일
+├── js/script.js                       # 언어 전환, 탭, 모바일 메뉴
+├── netlify.toml                       # 현재 정적 배포 설정
+├── docs/
+│   ├── PROJECT_AUDIT.md               # 현재 상태 감사 결과와 위험요소
+│   ├── PRODUCT_SCOPE.md               # 공개 홈페이지와 입주민 포털 범위
+│   ├── ROADMAP.md                     # 우선순위와 단계별 개발계획
+│   └── CONTENT_VERIFICATION.md        # 단지 정보·사진·문구 검증 기준
+├── CONTRIBUTING.md                    # 개발·문서 변경 규칙
+└── .github/PULL_REQUEST_TEMPLATE.md   # PR 검증 체크리스트
+```
+
+## 우선순위
+
+### P0 — 프로토타입 신뢰성
+
+운영 또는 대외 공개 판단 전에 반드시 해결해야 합니다.
+
+- [#1 CSS Grid 오류 및 반응형 레이아웃 검증](../../issues/1)
+- [#2 공식 단지정보 전체 검증과 정정](../../issues/2)
+- [#3 임시 이미지·과장 문구·비공식 브랜딩 정리](../../issues/3)
+
+### P1 — 공개 홈페이지와 운영 거버넌스
+
+- [#4 공개 홈페이지 정보구조와 실제 페이지 라우팅](../../issues/4)
+- [#5 공지·문서·관리자 게시 워크플로](../../issues/5)
+- [#6 역할·승인권한·변경불가 감사로그](../../issues/6)
+- [#7 접근성·키보드·모바일 사용성](../../issues/7)
+- [#8 보안·개인정보·보관기간 기준](../../issues/8)
+
+### P2 — 운영 품질과 주민서비스 설계
+
+- [#9 검색·카카오톡 공유·공식 사이트 메타데이터](../../issues/9)
+- [#10 CI 품질검사·프리뷰 배포·출시 체크리스트](../../issues/10)
+- [#11 입주민 포털과 외부서비스 연동 계획](../../issues/11)
+
+전체 범위와 출시 기준은 [총괄 이슈 #12](../../issues/12)에서 관리합니다.
+
+## 첫 운영 버전의 범위
+
+첫 번째 운영 후보는 다음 공개 정보만 제공합니다.
+
+- 검증된 단지 소개
+- 공식 공지사항
+- 관리 및 점검 일정
+- 공개가 승인된 회의 결과와 문서
+- 관리사무소 안내
+- 자주 묻는 질문
+- 개인정보처리방침과 사이트 상태 고지
+- 별도로 분리된 입주민 서비스 진입 링크
+
+다음 기능은 첫 공개 MVP에서 제외합니다.
+
+- 자체 전자투표 엔진
+- 주민 자유게시판
+- 민원·방문차량·예약 개인정보 저장
+- 승인되지 않은 내부 문서 공개
+- 실명 주민정보 검색
+- 게시기록의 무기록 수정 또는 삭제
+
+## 알려진 주요 문제
+
+1. CSS에 유효하지 않은 `grid-template-cols` 속성이 반복되어 있습니다.
+2. 세대수·동 수·연락처 등 일부 단지정보가 공식 확인되지 않았습니다.
+3. 메인 이미지는 실제 단지 사진이 아닌 외부 임시 이미지입니다.
+4. `Aurum Residences` 등 비공식 브랜드와 검증되지 않은 홍보 문구가 포함되어 있습니다.
+5. 주요 메뉴는 개별 페이지가 아니라 하나의 공통 준비중 화면을 사용합니다.
+6. 로그인과 주민서비스 버튼은 실제 기능과 연결되어 있지 않습니다.
+7. 클릭 가능한 `div` 등 접근성 문제가 있습니다.
+8. 외부 아이콘 스크립트가 `@latest`로 로드되어 버전이 고정되지 않았습니다.
+9. 관리자 권한, 게시 승인, 버전기록, 감사로그가 없습니다.
+10. 자동 테스트, 상태검사, 프리뷰 검증과 출시 승인 절차가 없습니다.
+
+자세한 내용은 [`docs/PROJECT_AUDIT.md`](docs/PROJECT_AUDIT.md)를 확인하십시오.
+
+## 운영 원칙
+
+- 공식 사실은 출처와 검증일을 기록합니다.
+- 주민 개인정보와 내부 분쟁자료는 공개 저장소에 올리지 않습니다.
+- 게시물은 작성·검토·승인·게시 주체를 분리할 수 있어야 합니다.
+- 이미 게시된 공식 기록을 흔적 없이 교체하거나 삭제하지 않습니다.
+- 기술관리자는 콘텐츠 승인권자가 아닙니다.
+- 선거 관련 게시권한은 일반 관리권한과 분리합니다.
+- 배포 성공만으로 운영 준비가 완료되었다고 판단하지 않습니다.
+
+## 개발 절차
+
+1. 개발 전에 대응 이슈를 선택합니다.
+2. 이슈의 범위와 완료조건을 확인합니다.
+3. 별도 브랜치에서 작업합니다.
+4. 테스트와 증거를 포함한 PR을 만듭니다.
+5. 공식 정보·문구·사진 변경은 권한 있는 검토자의 승인을 받습니다.
+6. 프리뷰 환경 검증 후에만 운영 배포를 검토합니다.
+
+세부 규칙은 [`CONTRIBUTING.md`](CONTRIBUTING.md)를 따릅니다.
+
+## 문서 상태
+
+- 기준일: 2026-08-04
+- 기준 브랜치: `main`
+- 문서화 총괄: [Issue #12](../../issues/12)
+- 구현 상태 판정: `PROTOTYPE / NOT PRODUCTION READY`
+
+## 라이선스와 공개범위
+
+현재 별도 라이선스 파일이 없습니다. 코드·사진·문구의 재사용 조건을 확정하기 전까지 외부 재사용을 허용한다고 해석해서는 안 됩니다. 실제 단지 사진과 공식 문서는 각각 저작권, 초상권, 개인정보 및 공개 승인 여부를 확인한 뒤 추가해야 합니다.
